@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+:root {
+
+  --primary: #0b1f3a;
+  --secondary: #c89b3c;
+
+}
+
+
+
+html {
+
+  scroll-behavior: smooth;
+
+}
+
+
+
+body {
+
+  margin: 0;
+  padding: 0;
+  background: white;
+  color: #111827;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+
+
+
+@layer components {
+
+
+  .container-custom {
+
+    @apply max-w-7xl mx-auto px-6;
+
+  }
+
+
+
+  .btn-primary {
+
+    @apply bg-[#0b1f3a] text-white px-8 py-4 rounded-xl font-semibold transition hover:opacity-90;
+
+  }
+
+
+
+  .btn-secondary {
+
+    @apply bg-[#c89b3c] text-white px-8 py-4 rounded-xl font-semibold transition hover:opacity-90;
+
+  }
+
+
+
+  .card-luxury {
+
+    @apply bg-white rounded-2xl shadow-lg transition duration-300 hover:-translate-y-2;
+
+  }
+
+
+
+}
+
+
+
+
+
+@layer utilities {
+
+
+  .text-primary {
+
+    color: var(--primary);
+
+  }
+
+
+
+  .text-secondary {
+
+    color: var(--secondary);
+
+  }
+
+
+
+  .bg-primary {
+
+    background-color: var(--primary);
+
+  }
+
+
+
+  .bg-secondary {
+
+    background-color: var(--secondary);
+
+  }
+
+
+
+  .shadow-luxury {
+
+    box-shadow:
+      0 20px 40px rgba(0,0,0,0.08);
+
+  }
+
+
+}
+
+
+
+
+
+/* Animations */
+
+
+@keyframes fadeIn {
+
+  from {
+
+    opacity: 0;
+    transform: translateY(20px);
+
+  }
+
+
+  to {
+
+    opacity: 1;
+    transform: translateY(0);
+
+  }
+
+}
+
+
+
+.animate-fadeIn {
+
+  animation: fadeIn 0.8s ease forwards;
+
+}
