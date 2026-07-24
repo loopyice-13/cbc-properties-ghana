@@ -79,17 +79,24 @@ const properties = {
 
 
 
-export default function PropertyDetails({
+export default async function PropertyDetails({
+
   params,
+
 }: {
-  params: {
+
+  params: Promise<{
     slug: string;
-  };
+  }>;
+
 }) {
 
 
+  const { slug } = await params;
+
+
   const property =
-    properties[params.slug as keyof typeof properties];
+    properties[slug as keyof typeof properties];
 
 
 
@@ -116,8 +123,6 @@ export default function PropertyDetails({
     <main className="bg-white min-h-screen">
 
 
-      {/* Header */}
-
       <section className="bg-primary text-white py-20">
 
         <div className="container-custom">
@@ -128,8 +133,11 @@ export default function PropertyDetails({
 
 
           <p className="flex items-center gap-2 mt-4">
+
             <MapPin />
+
             {property.location}
+
           </p>
 
         </div>
@@ -139,8 +147,6 @@ export default function PropertyDetails({
 
 
 
-
-      {/* Gallery */}
 
       <section className="container-custom py-12">
 
@@ -155,25 +161,27 @@ export default function PropertyDetails({
 
 
 
-      {/* Content */}
-
       <section className="container-custom pb-20">
 
 
         <div className="grid md:grid-cols-3 gap-10">
 
 
-
           <div className="md:col-span-2">
 
 
             <h2 className="text-3xl font-bold text-primary">
+
               Property Description
+
             </h2>
 
 
+
             <p className="mt-5 text-gray-600 leading-relaxed">
+
               {property.description}
+
             </p>
 
 
@@ -184,32 +192,42 @@ export default function PropertyDetails({
 
 
               <div className="bg-gray-50 p-5 rounded-xl text-center">
+
                 <BedDouble className="mx-auto text-secondary"/>
+
                 <p className="mt-2">
                   {property.bedrooms} Bedrooms
                 </p>
+
               </div>
 
 
 
               <div className="bg-gray-50 p-5 rounded-xl text-center">
+
                 <Bath className="mx-auto text-secondary"/>
+
                 <p className="mt-2">
                   {property.bathrooms} Bathrooms
                 </p>
+
               </div>
 
 
 
               <div className="bg-gray-50 p-5 rounded-xl text-center">
+
                 <Maximize className="mx-auto text-secondary"/>
+
                 <p className="mt-2">
                   {property.size}
                 </p>
+
               </div>
 
 
             </div>
+
 
 
 
@@ -224,18 +242,22 @@ export default function PropertyDetails({
 
 
 
-            {/* Map */}
 
             <div className="mt-12">
 
+
               <h3 className="text-3xl font-bold text-primary mb-6">
+
                 Location
+
               </h3>
+
 
 
               <GoogleMap
                 location={property.location}
               />
+
 
             </div>
 
@@ -249,19 +271,23 @@ export default function PropertyDetails({
 
 
 
-          {/* Contact */}
-
           <aside className="bg-primary text-white p-8 rounded-3xl h-fit">
 
 
             <p className="text-gray-300">
+
               Property Price
+
             </p>
 
 
+
             <h2 className="text-3xl font-bold text-secondary mt-2">
+
               {property.price}
+
             </h2>
+
 
 
 
@@ -276,6 +302,7 @@ export default function PropertyDetails({
               Call CBC
 
             </a>
+
 
 
 
@@ -295,6 +322,7 @@ export default function PropertyDetails({
 
 
           </aside>
+
 
 
         </div>
